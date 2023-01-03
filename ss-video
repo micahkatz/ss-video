@@ -1,0 +1,13 @@
+#!/bin/zsh
+
+if [[ -z "$1" ]]
+then
+    echo "Usage: ss-video <video-file> [output-name] [seconds e.g 01]"
+
+elif [ -z "$2"]; then
+    ffmpeg -ss 00:00:01 -i $1 -frames:v 1 -q:v 2 screenshot.png
+elif [ -z "$3"]; then
+    ffmpeg -ss 00:00:01 -i $1 -frames:v 1 -q:v 2 $2
+else
+    ffmpeg -ss 00:00:$3 -i $1 -frames:v 1 -q:v 2 $2
+fi
